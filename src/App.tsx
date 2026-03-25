@@ -295,7 +295,7 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-10 rounded-[40px] bg-white border border-zinc-100 shadow-sm"
+              className="p-0"
             >
               <div className="flex flex-col items-start">
                 <div className="w-16 h-16 rounded-2xl bg-linear-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg mb-8">
@@ -343,47 +343,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* Projects Section */}
-        <section id="projects" className="mb-32 relative">
-          <div className="flex justify-between items-end mb-12">
-            <SectionHeader title="Projects" subtitle="A collection of my recent work" noMargin />
-            <div className="hidden md:flex gap-4 mb-4">
-              <button 
-                onClick={() => scrollSlider('left')}
-                className="p-3 rounded-full border border-zinc-200 hover:bg-zinc-900 hover:text-white transition-all"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <button 
-                onClick={() => scrollSlider('right')}
-                className="p-3 rounded-full border border-zinc-200 hover:bg-zinc-900 hover:text-white transition-all"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
-          </div>
-          
-          <div className="relative group">
-            <div 
-              ref={sliderRef}
-              className="overflow-x-auto no-scrollbar px-4 -mx-4 pb-8"
-              style={{ scrollSnapType: 'x mandatory' }}
-            >
-              <div className="flex gap-8 w-max">
-                {PROJECTS.map((project, idx) => (
-                  <div key={idx} className="min-w-[320px] shrink-0 scroll-snap-align-start">
-                    <ProjectCard {...project} index={idx} />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <p className="text-center text-xs text-zinc-400 mt-4 md:hidden font-medium uppercase tracking-widest">
-              Swipe to explore
-            </p>
-          </div>
-        </section>
-
         {/* Skills Section */}
         <section id="skills" className="mb-32">
           <SectionHeader title="Technical Arsenal" subtitle="Tools and technologies I work with" />
@@ -428,6 +387,47 @@ export default function App() {
                 </svg>
               }
             />
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects" className="mb-32 relative">
+          <div className="flex justify-between items-end mb-12">
+            <SectionHeader title="Projects" subtitle="A collection of my recent work" noMargin />
+            <div className="hidden md:flex gap-4 mb-4">
+              <button 
+                onClick={() => scrollSlider('left')}
+                className="p-3 rounded-full border border-zinc-200 hover:bg-zinc-900 hover:text-white transition-all"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button 
+                onClick={() => scrollSlider('right')}
+                className="p-3 rounded-full border border-zinc-200 hover:bg-zinc-900 hover:text-white transition-all"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          </div>
+          
+          <div className="relative group">
+            <div 
+              ref={sliderRef}
+              className="overflow-x-auto no-scrollbar px-4 -mx-4 pb-8"
+              style={{ scrollSnapType: 'x mandatory' }}
+            >
+              <div className="flex gap-8 w-max">
+                {PROJECTS.map((project, idx) => (
+                  <div key={idx} className="min-w-[320px] shrink-0 scroll-snap-align-start">
+                    <ProjectCard {...project} index={idx} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <p className="text-center text-xs text-zinc-400 mt-4 md:hidden font-medium uppercase tracking-widest">
+              Swipe to explore
+            </p>
           </div>
         </section>
 
