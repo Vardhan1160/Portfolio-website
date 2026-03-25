@@ -16,7 +16,10 @@ import {
   ChevronRight,
   ChevronLeft,
   MapPin,
-  Phone
+  Phone,
+  Download,
+  Calendar,
+  Trophy
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
@@ -74,7 +77,7 @@ const EDUCATION = [
   {
     school: "Lovely Professional University",
     degree: "Bachelor of Technology - Computer Science and Engineering",
-    period: "Aug 2023 - Present",
+    period: "Aug 2023 - 2027",
     score: "CGPA: 7.02",
     location: "Phagwara, Punjab"
   },
@@ -99,19 +102,35 @@ const CERTIFICATIONS = [
     title: "Oracle Cloud Infrastructure Certified Data Science",
     date: "Sep 2025",
     issuer: "Oracle",
-    link: "https://drive.google.com/file/d/1DTQ7602La_-bJlegiwStL9c4N-VvNYA5/view"
+    link: "https://drive.google.com/file/d/1DTQ7602La_-bJlegiwStL9c4N-VvNYA5/view",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg"
   },
   {
     title: "Cloud Computing NPTEL",
     date: "Aug 2025",
     issuer: "NPTEL",
-    link: "https://drive.google.com/file/d/19RhrjHqn4OhR_TDgvozKLu5tV6-2o4tI/view?usp=drive_link"
+    link: "https://drive.google.com/file/d/19RhrjHqn4OhR_TDgvozKLu5tV6-2o4tI/view?usp=drive_link",
+    logo: "https://upload.wikimedia.org/wikipedia/en/f/f8/NPTEL_logo.png"
   },
   {
     title: "SQL Advanced",
     date: "Feb 2026",
     issuer: "HackerRank",
-    link: "https://www.hackerrank.com/certificates/16fd0cec7863"
+    link: "https://www.hackerrank.com/certificates/16fd0cec7863",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hackerrank/hackerrank-original.svg"
+  }
+];
+
+const ACHIEVEMENTS = [
+  {
+    title: "LeetCode: 200+ Problems Solved",
+    description: "Successfully solved over 200 problems across various difficulty levels, demonstrating strong analytical thinking and algorithmic expertise.",
+    icon: <Code2 size={24} />
+  },
+  {
+    title: "HackWithVertos 1.0 Participant",
+    description: "Participated in a 24-hour hackathon organized by Student Organization ECHO at Lovely Professional University, Punjab (Feb 2024).",
+    icon: <Trophy size={24} />
   }
 ];
 
@@ -165,9 +184,16 @@ export default function App() {
             VARDHAN.
           </motion.span>
           <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-600">
-            {['About', 'Projects', 'Skills', 'Education'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-zinc-900 transition-colors">
-                {item}
+            {[
+              { label: 'Home', href: '#home' },
+              { label: 'About Me', href: '#about-me' },
+              { label: 'Projects', href: '#projects' },
+              { label: 'Achievements', href: '#achievements' },
+              { label: 'Skills', href: '#skills' },
+              { label: 'Education', href: '#education' }
+            ].map((item) => (
+              <a key={item.label} href={item.href} className="hover:text-zinc-900 transition-colors">
+                {item.label}
               </a>
             ))}
           </div>
@@ -184,7 +210,7 @@ export default function App() {
 
       <main className="max-w-6xl mx-auto px-6 pt-32 pb-20">
         {/* Hero Section */}
-        <section id="about" className="mb-32">
+        <section id="home" className="mb-32 relative">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -199,7 +225,7 @@ export default function App() {
                 <span className="text-zinc-400">Vardhan.</span>
               </h1>
               <p className="text-xl text-zinc-600 mb-10 max-w-md leading-relaxed">
-                Computer Science student at LPU. Passionate about Machine Learning, C++, and building efficient software solutions.
+                Computer Science professional specializing in Machine Learning, C++, and Data Analysis. Passionate about building intelligent systems and extracting actionable insights from data.
               </p>
               
               <div className="flex flex-wrap gap-4 mb-10">
@@ -227,12 +253,92 @@ export default function App() {
               className="relative aspect-square rounded-3xl overflow-hidden bg-zinc-200 group"
             >
               <img 
-                src="https://picsum.photos/seed/vardhan/800/800" 
+                src="https://res.cloudinary.com/dgfipqki1/image/upload/v1774361934/WhatsApp_Image_2026-03-24_at_7.32.10_PM_yts1o9.jpg" 
                 alt="Profile" 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover rounded-3xl transition-all duration-700 opacity-90 hover:opacity-100"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-zinc-900/40 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-zinc-900/20 to-transparent" />
+            </motion.div>
+          </div>
+
+          {/* Download CV Button */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1 }}
+            className="absolute -bottom-6 right-0 md:right-6"
+          >
+            <motion.a
+              href="https://drive.google.com/file/d/1aKrlBUa_QlL09WwlDopLGZQoS11q7aMP/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-3 px-6 py-4 bg-zinc-900 text-white rounded-2xl shadow-2xl hover:bg-zinc-800 transition-all group"
+            >
+              <div className="p-2 bg-white/10 rounded-lg group-hover:bg-white/20 transition-colors">
+                <Download size={20} />
+              </div>
+              <div className="flex flex-col items-start">
+                <span className="text-[10px] uppercase tracking-widest font-bold text-zinc-400 leading-none mb-1">Curriculum Vitae</span>
+                <span className="text-sm font-bold leading-none">Download CV</span>
+              </div>
+            </motion.a>
+          </motion.div>
+        </section>
+
+        {/* About Me Section */}
+        <section id="about-me" className="mb-32">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="p-10 rounded-[40px] bg-white border border-zinc-100 shadow-sm"
+            >
+              <div className="flex flex-col items-start">
+                <div className="w-16 h-16 rounded-2xl bg-linear-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg mb-8">
+                  <div className="text-3xl">👨‍💻</div>
+                </div>
+                
+                <h2 className="text-4xl font-display font-extrabold tracking-tight mb-6 flex items-center gap-3">
+                  Hey, I'm Vardhan <span className="animate-bounce">👋</span>
+                </h2>
+
+                <div className="space-y-6 text-zinc-500 leading-relaxed">
+                  <p className="text-lg font-medium text-zinc-600">
+                    I am a Computer Science professional with a deep passion for Data Science and Software Engineering. My journey is defined by a commitment to building intelligent systems and extracting actionable insights from complex data.
+                  </p>
+                  
+                  <p>
+                    My technical expertise is best reflected in my diverse projects. I have developed an <span className="font-bold text-zinc-900">end-to-end Credit Card Fraud Detection system</span> using Python and Scikit-Learn, demonstrating my ability to build robust machine learning pipelines. My interest in efficient algorithms led me to create a <span className="font-bold text-zinc-900">Trie-based Word Suggestor</span> in C++, which optimizes prefix searches for real-time applications. Additionally, I have a strong command of data visualization, as seen in my <span className="font-bold text-zinc-900">Excel Data Analysis</span> projects where I transform raw data into interactive dashboards.
+                  </p>
+
+                  <p>
+                    Beyond project work, I have a solid foundation in problem-solving, having solved <span className="font-bold text-zinc-900">200+ Data Structures and Algorithms problems</span> on LeetCode. I am constantly seeking new challenges that allow me to bridge the gap between theoretical computer science and real-world data-driven solutions.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-12 mt-12 pt-8 border-t border-zinc-50 w-full">
+                  <div className="flex items-center gap-3 text-sm text-zinc-500">
+                    <Mail size={18} className="text-indigo-500" />
+                    <span>vardhanguthula99@gmail.com</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-zinc-500">
+                    <Phone size={18} className="text-indigo-500" />
+                    <span>+91 8885604839</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-zinc-500">
+                    <MapPin size={18} className="text-indigo-500" />
+                    <span>Andhra Pradesh, India</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-zinc-500">
+                    <Calendar size={18} className="text-indigo-500" />
+                    <span>Available Now</span>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -288,9 +394,56 @@ export default function App() {
           </div>
         </section>
 
+        {/* Coding Profiles Section */}
+        <section className="mb-32">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-display font-bold tracking-tight">Coding Profiles</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <CodingProfileCard 
+              name="LeetCode"
+              description="200+ problems solved across all difficulty levels"
+              link="https://leetcode.com/u/8309693848/"
+              color="from-orange-400 to-orange-600"
+              bg="bg-orange-50/50"
+              border="border-orange-100"
+              btnColor="bg-orange-100 text-orange-700 hover:bg-orange-200"
+              icon={
+                <svg viewBox="0 0 24 24" className="w-10 h-10 text-white fill-current">
+                  <path d="M13.483 0a1.374 1.374 0 0 0-.961.414l-11.71 11.593a1.384 1.384 0 0 0 0 1.981l1.198 1.19a1.387 1.387 0 0 0 1.983 0l1.197-1.191a1.384 1.384 0 0 0 0-1.981L12.43 4.053a1.387 1.387 0 0 1 1.983 0l1.197 1.191a1.384 1.384 0 0 1 0 1.981L7.396 15.05a1.387 1.387 0 0 0 0 1.983l1.197 1.191a1.384 1.384 0 0 0 1.983 0l8.214-8.205a1.387 1.387 0 0 0 0-1.983L14.444.414A1.374 1.374 0 0 0 13.483 0zm-6.086 16.05l-1.197 1.191a1.384 1.384 0 0 0 0 1.981l1.197 1.191a1.387 1.387 0 0 0 1.983 0l1.197-1.191a1.384 1.384 0 0 0 0-1.981l-1.197-1.191a1.387 1.387 0 0 0-1.983 0z"/>
+                </svg>
+              }
+            />
+            <CodingProfileCard 
+              name="HackerRank"
+              description="Problem solving & skill certifications"
+              link="https://www.hackerrank.com/profile/vardhanguthula99"
+              color="from-emerald-500 to-emerald-700"
+              bg="bg-zinc-50"
+              border="border-zinc-200"
+              btnColor="bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
+              icon={
+                <svg viewBox="0 0 24 24" className="w-10 h-10 text-white fill-current">
+                  <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z"/>
+                </svg>
+              }
+            />
+          </div>
+        </section>
+
+        {/* Achievements Section */}
+        <section id="achievements" className="mb-32">
+          <SectionHeader title="Achievements" subtitle="Milestones and recognitions" />
+          <div className="grid md:grid-cols-3 gap-6">
+            {ACHIEVEMENTS.map((achievement, idx) => (
+              <AchievementCard key={idx} {...achievement} index={idx} />
+            ))}
+          </div>
+        </section>
+
         {/* Education & Training */}
         <section id="education" className="mb-32">
-          <SectionHeader title="Education & Training" subtitle="My academic journey" />
+          <SectionHeader title="Education" subtitle="My academic journey" />
           <div className="space-y-8">
             {EDUCATION.map((edu, idx) => (
               <EducationCard key={idx} {...edu} index={idx} />
@@ -331,13 +484,33 @@ export default function App() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className={`flex items-center justify-between p-6 rounded-2xl border border-zinc-200 transition-colors group ${cert.link ? 'hover:border-zinc-900 cursor-pointer' : 'cursor-default'}`}
+                className={`flex items-center gap-6 p-6 rounded-[32px] border border-zinc-100 bg-white transition-all duration-500 group ${cert.link ? 'hover:border-zinc-900 hover:shadow-2xl hover:-translate-y-2 cursor-pointer' : 'cursor-default'}`}
               >
-                <div>
-                  <h4 className="font-bold text-lg mb-1">{cert.title}</h4>
-                  <p className="text-sm text-zinc-500">{cert.issuer} • {cert.date}</p>
+                <div className="w-20 h-20 shrink-0 flex items-center justify-center rounded-3xl bg-zinc-50 border border-zinc-100 transition-all duration-500 group-hover:bg-white group-hover:scale-105 group-hover:shadow-md overflow-hidden p-4">
+                  {cert.logo ? (
+                    <img 
+                      src={cert.logo} 
+                      alt={cert.issuer} 
+                      className="w-full h-full object-contain transition-transform duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <Award className="text-zinc-400" size={32} />
+                  )}
                 </div>
-                <Award className="text-zinc-200 group-hover:text-zinc-900 transition-colors" size={24} />
+                <div className="flex-1">
+                  <h4 className="font-display font-bold text-lg mb-1 group-hover:text-zinc-900 transition-colors leading-tight">{cert.title}</h4>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">{cert.issuer}</span>
+                    <span className="w-1 h-1 rounded-full bg-zinc-200" />
+                    <span className="text-xs font-bold text-zinc-400">{cert.date}</span>
+                  </div>
+                </div>
+                {cert.link && (
+                  <div className="w-10 h-10 rounded-full bg-zinc-50 flex items-center justify-center text-zinc-300 group-hover:bg-zinc-900 group-hover:text-white transition-all duration-500">
+                    <ExternalLink size={16} />
+                  </div>
+                )}
               </motion.a>
             ))}
           </div>
@@ -369,6 +542,26 @@ function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
     >
       {icon}
     </motion.a>
+  );
+}
+
+function AchievementCard({ title, description, icon, index }: any) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className="p-8 rounded-[32px] border border-zinc-100 bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col gap-6 items-start group"
+    >
+      <div className="w-16 h-16 rounded-2xl bg-zinc-50 flex items-center justify-center text-zinc-900 shrink-0 group-hover:bg-zinc-900 group-hover:text-white transition-all duration-500">
+        {icon}
+      </div>
+      <div>
+        <h3 className="text-xl font-display font-bold mb-2 text-zinc-900 leading-tight">{title}</h3>
+        <p className="text-zinc-500 text-sm leading-relaxed">{description}</p>
+      </div>
+    </motion.div>
   );
 }
 
@@ -422,6 +615,33 @@ function ProjectCard({ title, date, description, tech, link, image, index }: any
           ))}
         </div>
       </div>
+    </motion.div>
+  );
+}
+
+function CodingProfileCard({ name, description, link, color, icon, bg, border, btnColor }: any) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className={`flex flex-col items-center p-8 rounded-[40px] border ${border} ${bg} transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}
+    >
+      <div className={`w-24 h-24 rounded-3xl bg-linear-to-br ${color} flex items-center justify-center shadow-lg mb-6`}>
+        {icon}
+      </div>
+      <h3 className={`text-2xl font-bold mb-3 ${name === 'LeetCode' ? 'text-orange-600' : 'text-zinc-900'}`}>{name}</h3>
+      <p className="text-center text-zinc-500 text-sm mb-8 leading-relaxed max-w-[200px]">
+        {description}
+      </p>
+      <a 
+        href={link} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className={`px-6 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${btnColor}`}
+      >
+        View Profile →
+      </a>
     </motion.div>
   );
 }
