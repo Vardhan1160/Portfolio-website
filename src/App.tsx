@@ -250,12 +250,12 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative aspect-square rounded-3xl overflow-hidden bg-zinc-200 group"
+              className="relative aspect-square rounded-full overflow-hidden bg-zinc-200 group max-w-[400px] mx-auto"
             >
               <img 
                 src="https://res.cloudinary.com/dgfipqki1/image/upload/v1774361934/WhatsApp_Image_2026-03-24_at_7.32.10_PM_yts1o9.jpg" 
                 alt="Profile" 
-                className="w-full h-full object-cover rounded-3xl transition-all duration-700 opacity-90 hover:opacity-100"
+                className="w-full h-full object-cover rounded-full transition-all duration-700 opacity-90 hover:opacity-100"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-linear-to-t from-zinc-900/20 to-transparent" />
@@ -270,7 +270,7 @@ export default function App() {
             className="absolute -bottom-6 right-0 md:right-6"
           >
             <motion.a
-              href="https://drive.google.com/file/d/1aKrlBUa_QlL09WwlDopLGZQoS11q7aMP/view?usp=sharing"
+              href="https://drive.google.com/file/d/1VQfWM_KxyhWSdho-mssGV-rqMFRLAF0O/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05, y: -5 }}
@@ -298,12 +298,8 @@ export default function App() {
               className="p-0"
             >
               <div className="flex flex-col items-start">
-                <div className="w-16 h-16 rounded-2xl bg-linear-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg mb-8">
-                  <div className="text-3xl">👨‍💻</div>
-                </div>
-                
                 <h2 className="text-4xl font-display font-extrabold tracking-tight mb-6 flex items-center gap-3">
-                  Hey, I'm Vardhan <span className="animate-bounce">👋</span>
+                  Hey, I'm Vardhan
                 </h2>
 
                 <div className="space-y-6 text-zinc-500 leading-relaxed">
