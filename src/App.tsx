@@ -19,7 +19,8 @@ import {
   Phone,
   Download,
   Calendar,
-  Trophy
+  Trophy,
+  Send
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
@@ -509,6 +510,72 @@ export default function App() {
                 )}
               </motion.a>
             ))}
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="mb-32">
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="p-12 rounded-[40px] bg-white border border-zinc-100 shadow-2xl"
+            >
+              <h2 className="text-3xl font-display font-extrabold tracking-tight mb-10">Send a Message</h2>
+              
+              <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-zinc-500 ml-1">Name *</label>
+                    <input 
+                      type="text" 
+                      placeholder="Your name"
+                      className="w-full px-6 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 transition-all placeholder:text-zinc-300"
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-zinc-500 ml-1">Email *</label>
+                    <input 
+                      type="email" 
+                      placeholder="your@email.com"
+                      className="w-full px-6 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 transition-all placeholder:text-zinc-300"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-zinc-500 ml-1">Subject *</label>
+                  <input 
+                    type="text" 
+                    placeholder="What's this about?"
+                    className="w-full px-6 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 transition-all placeholder:text-zinc-300"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-zinc-500 ml-1">Message *</label>
+                  <textarea 
+                    rows={5}
+                    placeholder="Tell me about your project or opportunity..."
+                    className="w-full px-6 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl focus:outline-hidden focus:ring-2 focus:ring-indigo-500/20 transition-all placeholder:text-zinc-300 resize-none"
+                    required
+                  />
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold flex items-center justify-center gap-3 shadow-lg shadow-indigo-500/20 hover:bg-indigo-700 transition-all"
+                >
+                  <Send size={20} />
+                  <span>Send Message</span>
+                </motion.button>
+              </form>
+            </motion.div>
           </div>
         </section>
 
