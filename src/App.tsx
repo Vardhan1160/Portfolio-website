@@ -119,6 +119,13 @@ const CERTIFICATIONS = [
     issuer: "HackerRank",
     link: "https://www.hackerrank.com/certificates/16fd0cec7863",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hackerrank/hackerrank-original.svg"
+  },
+  {
+    title: "HackWithVertos 1.0 Hackathon Participation",
+    date: "Feb 2024",
+    issuer: "Student Organization ECHO (LPU)",
+    link: "",
+    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Lovely_Professional_University_logo.png/600px-Lovely_Professional_University_logo.png"
   }
 ];
 
